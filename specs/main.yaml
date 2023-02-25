@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Estimate Rest API
+  description: REST API endpoints for create and managing Estimates
+  version: 1
+
+
+servers:
+  - url: http://localhost:8080
+
+
+paths:
+  /estimates:
+    get:
+      tags:
+        - Estimate
+      summary: Get all estimates
+      description: Get all estimates
+      operationId: getAllEstimates
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EstimateDTO'
+
+
+components:
+  schemas:
+    EstimateDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: identifier
+        name:
+          type: string
+        description:
+          type: string
+
